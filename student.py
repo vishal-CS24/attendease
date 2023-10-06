@@ -26,8 +26,6 @@ class Student():
          self.var_address=StringVar()
          self.var_teacher=StringVar()
          self.var_search=StringVar()
-
-
          #-----------------------Top bar-------------------------------------------------------------
 
         #  #first image

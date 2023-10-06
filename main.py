@@ -34,7 +34,6 @@ class Attendease():
          self.photoimg2=ImageTk.PhotoImage(img2)
          f_lbl2=Label(self.root,image=self.photoimg2)
          f_lbl2.place(x=1050,y=0,width=550,height=130)
-
         # ----------------------------------------#background image---------------------------------------------------------------
          bgimg=Image.open(r"attendese\pictures\h18.jpg")
          bgimg=bgimg.resize((1530,790),Image.ANTIALIAS)
@@ -46,12 +45,10 @@ class Attendease():
          title.place(x=0,y=0,width=1530,height=45)
          title1=Label(bglbl,text="(A Machine learning based Attendance System)",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          title1.place(x=0,y=40,width=1530,height=45)
-
          #--------------------Student Button--------------------------
          stdbutton=Image.open(r"attendese\pictures\st.jpg")
          stdbutton=stdbutton.resize((220,220),Image.ANTIALIAS)
          self.stdphotoimg=ImageTk.PhotoImage(stdbutton)
-
          sb=Button(bglbl,image=self.stdphotoimg,command=self.student_details,cursor="hand2")
          sb.place(x=195,y=100,width=220,height=220)
          sbl=Button(bglbl,text="Student Details",command=self.student_details,cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
@@ -60,23 +57,20 @@ class Attendease():
          trbutton=Image.open(r"attendese\pictures\training.jpeg")
          trbutton=trbutton.resize((220,220),Image.ANTIALIAS)
          self.trphotoimg=ImageTk.PhotoImage(trbutton)
-
          sb2=Button(bglbl,command=self.classifier_train,image=self.trphotoimg,cursor="hand2")
          sb2.place(x=425,y=100,width=220,height=220)
          sbl2=Button(bglbl,command=self.classifier_train,text="Train Data",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl2.place(x=425,y=280,width=220,height=40)
-
          #----------------FACE DETECTION-------------------------------------
          fdbutton=Image.open(r"attendese\pictures\h14.jpeg")
          fdbutton=fdbutton.resize((220,220),Image.ANTIALIAS)
          self.fdphotoimg=ImageTk.PhotoImage(fdbutton)
-
          sb1=Button(bglbl,command=self.recognize_face,image=self.fdphotoimg,cursor="hand2")
          sb1.place(x=655,y=100,width=220,height=220)
          sbl1=Button(bglbl,text="Face Detector",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl1.place(x=655,y=280,width=220,height=40)
      
-        #--------------------------Attendance---------------------------
+    #--------------------------Attendance---------------------------
          adbutton=Image.open(r"attendese\pictures\attendance.jpeg")
          adbutton=adbutton.resize((220,220),Image.ANTIALIAS)
          self.adphotoimg=ImageTk.PhotoImage(adbutton)
@@ -86,8 +80,7 @@ class Attendease():
          sbl3=Button(bglbl,command=self.attendance,text="Attendance Details",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl3.place(x=885,y=280,width=220,height=40)
 
-         #-----------------Photos------------------------
-         
+    #-----------------Photos------------------------
          phbutton=Image.open(r"attendese\pictures\photos.jpg")
          phbutton=phbutton.resize((220,220),Image.ANTIALIAS)
          self.phphotoimg=ImageTk.PhotoImage(phbutton)
@@ -97,7 +90,7 @@ class Attendease():
          sbl4=Button(bglbl,command=self.open_images,text="Photos",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl4.place(x=1115,y=280,width=220,height=40)
 
-         #----------------Help--------------------
+    #----------------Help--------------------
          hbutton=Image.open(r"attendese\pictures\support.png")
          hbutton=hbutton.resize((220,220),Image.ANTIALIAS)
          self.hphotoimg=ImageTk.PhotoImage(hbutton)
@@ -107,7 +100,7 @@ class Attendease():
          sbl5=Button(bglbl,text="Support",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl5.place(x=535,y=510,width=220,height=40)
 
-         #--------------------Exit--------------------------
+    #---------------------------Exit------------------------------
          ebutton=Image.open(r"attendese\pictures\exit.png")
          ebutton=ebutton.resize((220,220),Image.ANTIALIAS)
          self.ehphotoimg=ImageTk.PhotoImage(ebutton)
@@ -115,20 +108,20 @@ class Attendease():
          sb5.place(x=765,y=330,width=220,height=220)
          sbl5=Button(bglbl,text="Exit",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl5.place(x=765,y=510,width=220,height=40)
-
-  #====================photo Access===========
+    #====================photo Access===========
     def open_images(self):
         os.startfile(r"C:\Users\Acer\Desktop\major project\attendese\Data")
-  #===============================function for student button================
+    #===============================function for student button================
     def student_details(self):
         self.new_window=Toplevel(self.root)
         self.app=Student(self.new_window)
-  #=========function for classifier=========
+    #=========function for classifier=========
     def classifier_train(self):
       train.train_classifier()
-
+    #===========function for recognize face==================
     def recognize_face(self):
       face_recognisation.faceRecognisation()
+    #=========function for attendance mark=====================
     def attendance(self):
         self.new_window=Toplevel(self.root)
         self.app=Attendance_mgmnt(self.new_window)
