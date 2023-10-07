@@ -104,9 +104,9 @@ class Attendease():
          ebutton=Image.open(r"attendese\pictures\exit.png")
          ebutton=ebutton.resize((220,220),Image.ANTIALIAS)
          self.ehphotoimg=ImageTk.PhotoImage(ebutton)
-         sb5=Button(bglbl,image=self.ehphotoimg,cursor="hand2")
+         sb5=Button(bglbl,command=root.destroy,image=self.ehphotoimg,cursor="hand2")
          sb5.place(x=765,y=330,width=220,height=220)
-         sbl5=Button(bglbl,text="Exit",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
+         sbl5=Button(bglbl,command=root.destroy,text="Exit",cursor="hand2",font=("Arial", 15,"bold"),bg="#ace5ee",fg="red")
          sbl5.place(x=765,y=510,width=220,height=40)
     #====================photo Access===========
     def open_images(self):

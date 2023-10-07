@@ -176,15 +176,16 @@ class Attendance_mgmnt():
         self.var_status.set(rows[4])
     
     def update_data(self):
-        r=self.var_rollno.get()
-        n=self.var_name.get()
-        t=self.var_time.get()
-        d=self.var_date.get()
-        s=self.var_status.get()
-        a=[r,n,t,d,s]
-        focused = self.AttendanceReportTable.focus()
-        # x = input('Enter a Value you want to change')
-        self.AttendanceReportTable.item(focused, values=("", str(s)))
+        pass
+        # r=self.var_rollno.get()
+        # n=self.var_name.get()
+        # t=self.var_time.get()
+        # d=self.var_date.get()
+        # s=self.var_status.get()
+        # a=[r,n,t,d,s]
+        # focused = self.AttendanceReportTable.focus()
+        # # x = input('Enter a Value you want to change')
+        # self.AttendanceReportTable.item(focused, values=("", str(s)))
         
     def resetData(self):
         self.var_rollno.set("")

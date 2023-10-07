@@ -4,6 +4,7 @@ from tkcalendar import Calendar, DateEntry
 from PIL import Image,ImageTk
 import mysql.connector
 import cv2
+import re
 class Student():
     def __init__(self,root):
          self.root= root
@@ -25,7 +26,8 @@ class Student():
          self.var_phone=StringVar()
          self.var_address=StringVar()
          self.var_teacher=StringVar()
-         self.var_search=StringVar()
+         self.var_search_type=StringVar() 
+         self.var_roll_search=StringVar()
          #-----------------------Top bar-------------------------------------------------------------
 
         #  #first image
@@ -187,7 +189,7 @@ class Student():
          take_photo=Button(btn_frame1,text="Take Photo Sample",width=19,command=self.generateDataset,font=("times new roman",13,"bold"),bg="#ace5ee",fg="black")
          take_photo.grid(row=0,column=0)
 
-         update_photo=Button(btn_frame1,text="Update Photo Sample",width=19,font=("times new roman",13,"bold"),bg="#ace5ee",fg="black")
+         update_photo=Button(btn_frame1,text="Update Photo Sample",command=self.generateDataset,width=19,font=("times new roman",13,"bold"),bg="#ace5ee",fg="black")
          update_photo.grid(row=0,column=1)
 
 
@@ -207,17 +209,17 @@ class Student():
          search_lbl=Label(search_frame,text="Search By : ",font=("times new roman",13,"bold"),bg="lightpink")
          search_lbl.grid(row=0,column=0,padx=10,pady=2,sticky=W)
 
-         search_cb=ttk.Combobox(search_frame,font=("times new roman",12,"bold"),state="readonly",background="white",width=13)
-         search_cb["values"]=("Select","Roll no","Name")
+         search_cb=ttk.Combobox(search_frame,textvariable=self.var_search_type,font=("times new roman",12,"bold"),state="readonly",background="white",width=13)
+         search_cb["values"]=("Select","Roll no","Lab Group")
          search_cb.current(0)
          search_cb.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
-         search_ip=ttk.Entry(search_frame,width=15,font=("times new roman",13,"bold"))
+         search_ip=ttk.Entry(search_frame,textvariable=self.var_roll_search,width=15,font=("times new roman",13,"bold"))
          search_ip.grid(row=0,column=2,padx=10,sticky=W)
 
-         search_btn=Button(search_frame,text="Search",bd=2,width=12,font=("times new roman",12,"bold"),bg="#ace5ee",fg="black")
+         search_btn=Button(search_frame,command=self.search,text="Search",bd=2,width=12,font=("times new roman",12,"bold"),bg="#ace5ee",fg="black")
          search_btn.grid(row=0,column=3,sticky=W,padx=5)
-         showall_btn=Button(search_frame,text="Show All",bd=2,width=12,font=("times new roman",12,"bold"),bg="#ace5ee",fg="black")
+         showall_btn=Button(search_frame,command=self.fetch_data,text="Show All",bd=2,width=12,font=("times new roman",12,"bold"),bg="#ace5ee",fg="black")
          showall_btn.grid(row=0,column=4,padx=5,sticky=W)
 
 #=========================table frame=====================
@@ -270,13 +272,18 @@ class Student():
 
      #==============function declaration=========
     def add_data(self):
+     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
      if self.var_dep.get()=="Select Department" or self.var_name.get()=="" or self.var_address.get()=="" or self.var_course.get()=="Select Course" or self.var_email.get()=="" or self.var_phone.get()=="" or self.var_roll.get()=="" or self.var_gender.get()=="Gender" or self.var_sem.get()=="Select Semester" or self.var_year.get()=="Select session" or self.var_teacher.get()=="" or self.var_div.get()=="" or self.var_id.get()=="":
           messagebox.showerror("Error","All fields are required",parent=self.root)
+     elif len(self.var_phone.get())!=10:
+          messagebox.showwarning("Phone number Error","Please add 10 digit phone number",parent=self.root)
+     elif not(re.fullmatch(regex, self.var_email.get())):
+          messagebox.showwarning("Email Error","Please add Valid email Address",parent=self.root)
      else:
           try:
-
                conn=mysql.connector.connect(host="localhost",user="root",password="root",database="attendease_db")
                my_cursor=conn.cursor()
+                         
                my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                     self.var_dep.get(),
                     self.var_course.get(),
@@ -337,6 +344,10 @@ class Student():
     def update_data(self):
      if self.var_dep.get()=="Select Department" or self.var_name.get()=="" or self.var_address.get()=="" or self.var_course.get()=="Select Course" or self.var_email.get()=="" or self.var_phone.get()=="" or self.var_roll.get()=="" or self.var_gender.get()=="Gender" or self.var_sem.get()=="Select Semester" or self.var_year.get()=="Select session" or self.var_teacher.get()=="" or self.var_div.get()=="" or self.var_id.get()=="":
           messagebox.showerror("Error","All fields are required",parent=self.root)
+     elif len(self.var_phone.get())!=10:
+          messagebox.showwarning("Phone number Error","Please add 10 digit phone number",parent=self.root)
+     elif not(re.fullmatch(regex, self.var_email.get())):
+          messagebox.showwarning("Email Error","Please add Valid email Address",parent=self.root)
      else:
           try:
                Update=messagebox.askyesno("Update","Do you want to update Student Details",parent=self.root)
@@ -411,6 +422,8 @@ class Student():
      self.var_address.set(""),
      self.var_teacher.set("")   
 
+
+
 #==============Dataset generation======================
     def generateDataset(self):
      if self.var_dep.get()=="Select Department" or self.var_name.get()=="" or self.var_address.get()=="" or self.var_course.get()=="Select Course" or self.var_email.get()=="" or self.var_phone.get()=="" or self.var_roll.get()=="" or self.var_gender.get()=="Gender" or self.var_sem.get()=="Select Semester" or self.var_year.get()=="Select session" or self.var_teacher.get()=="" or self.var_div.get()=="" or self.var_id.get()=="":
@@ -480,10 +493,38 @@ class Student():
                messagebox.showerror("Error",f"Due to {str(es)}",parent=self.root)
 
      #============================serach============================
-#     def sreach(self):
-#      if self.var_dep.get()=="":
-#           messagebox.showerror("Error","All fields are required",parent=self.root)
-#      else:
+    def search(self):
+     def fetch_search(sby,inpt):
+          conn=mysql.connector.connect(host="localhost",user="root",password="root",database="attendease_db")
+          my_cursor=conn.cursor()
+          if sby=="r":
+               my_cursor.execute("select * from student where Roll_no=%s",(inpt,))
+          else:
+               my_cursor.execute("select * from student where Lab_Group=%s",(inpt,))
+
+          data=my_cursor.fetchall()
+          if len(data)!=0:
+               self.student_table.delete(*self.student_table.get_children())
+               for i in data:
+                    self.student_table.insert("",END,values=i)
+               conn.commit()
+          conn.close()
+
+     if self.var_search_type.get()=="Roll no":
+          inpt=self.var_roll_search.get()
+          if inpt=="":
+               messagebox.showwarning("Roll Number","Please, enter a Roll Number",parent=self.root)
+          else:
+               fetch_search("r",inpt)
+     elif self.var_search_type.get()=="Lab Group":
+          inpt=self.var_roll_search.get()
+          if inpt=="":
+               messagebox.showwarning("Lab Group","Please, enter Lab Group(1 or 2)",parent=self.root)
+          else:
+               fetch_search("l",inpt)
+          
+     else:
+          messagebox.showwarning("Search Warning","Please Select search type",parent=self.root)
 
 
 if __name__=="__main__":
