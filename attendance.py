@@ -11,7 +11,7 @@ mydata=[]
 class Attendance_mgmnt():
     def __init__(self,root):
          self.root= root
-         self.root.geometry("1530x830+0+0")
+         self.root.geometry("1535x835+0+0")
          self.root.title("Attendance Management System")
          self.root.iconbitmap("./attendese\pictures\icon.ico")
 
