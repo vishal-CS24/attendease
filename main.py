@@ -65,7 +65,7 @@ class Attendease():
          trbutton=trbutton.resize((220,220),Image.ANTIALIAS)
          self.trphotoimg=ImageTk.PhotoImage(trbutton)
          sb2=Button(bglbl,command=self.classifier_train,image=self.trphotoimg,cursor="hand2")
-         sb2.place(x=425,y=10,width=220,height=220)
+         sb2.place(x=415,y=10,width=220,height=220)
         #  sbl2=Button(bglbl,command=self.classifier_train,text="Train Data",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl2.place(x=425,y=195,width=220,height=40)
          #----------------FACE DETECTION-------------------------------------
@@ -73,7 +73,7 @@ class Attendease():
          fdbutton=fdbutton.resize((220,220),Image.ANTIALIAS)
          self.fdphotoimg=ImageTk.PhotoImage(fdbutton)
          sb1=Button(bglbl,command=self.recognize_face,image=self.fdphotoimg,cursor="hand2")
-         sb1.place(x=655,y=10,width=220,height=220)
+         sb1.place(x=635,y=10,width=220,height=220)
         #  sbl1=Button(bglbl,text="Face Detector",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl1.place(x=655,y=195,width=220,height=40)
      
@@ -83,7 +83,7 @@ class Attendease():
          self.adphotoimg=ImageTk.PhotoImage(adbutton)
 
          sb3=Button(bglbl,command=self.attendance,image=self.adphotoimg,cursor="hand2")
-         sb3.place(x=885,y=10,width=220,height=220)
+         sb3.place(x=855,y=10,width=220,height=220)
         #  sbl3=Button(bglbl,command=self.attendance,text="Attendance Details",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl3.place(x=885,y=195,width=220,height=40)
 
@@ -93,7 +93,7 @@ class Attendease():
          self.phphotoimg=ImageTk.PhotoImage(phbutton)
 
          sb4=Button(bglbl,command=self.open_images,image=self.phphotoimg,cursor="hand2")
-         sb4.place(x=1115,y=10,width=220,height=220)
+         sb4.place(x=1075,y=10,width=220,height=220)
         #  sbl4=Button(bglbl,command=self.open_images,text="Photos",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl4.place(x=1115,y=195,width=220,height=40)
 
