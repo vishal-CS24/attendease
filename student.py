@@ -11,6 +11,7 @@ class Student():
          self.root.geometry("1535x835+0+0")
          self.root.title("Student Management System")
          self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.state('zoomed')
 #=============variables============
          self.var_dep=StringVar()
          self.var_course=StringVar()

@@ -14,6 +14,7 @@ class Attendance_mgmnt():
          self.root.geometry("1535x835+0+0")
          self.root.title("Attendance Management System")
          self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.state('zoomed')
 
          #-===text variables========
          self.var_status=StringVar()
