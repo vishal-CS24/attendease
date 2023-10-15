@@ -309,7 +309,6 @@ class Student():
                messagebox.showerror("Error",f"Due to :{str(es)}",parent=self.root)
    #===================fetch data===========       
     def fetch_data(self):
-
      conn=mysql.connector.connect(host="localhost",user="root",password="root",database="attendease_db")
      my_cursor=conn.cursor()
      my_cursor.execute("select * from student")

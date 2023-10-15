@@ -6,6 +6,7 @@ import os
 import train
 import face_recognisation
 from attendance import Attendance_mgmnt
+import customtkinter as ct
 
 class Attendease():
     def __init__(self,root):
@@ -26,49 +27,49 @@ class Attendease():
          f_lbl.place(x=480,y=235,width=570 ,height=370)
 
          #--------------------Student Button--------------------------
-         stdbutton=Image.open(r"attendese\pictures\st.jpg")
-         stdbutton=stdbutton.resize((220,220),Image.ANTIALIAS)
+         stdbutton=Image.open(r"attendese\pictures\studetails.png")
+         stdbutton=stdbutton.resize((150,150),Image.ANTIALIAS)
          self.stdphotoimg=ImageTk.PhotoImage(stdbutton)
-         sb=Button(bglbl,image=self.stdphotoimg,command=self.student_details,cursor="hand2")
-         sb.place(x=195,y=10,width=220,height=220)
+         sb=ct.CTkButton(bglbl,text="",image=self.stdphotoimg,command=self.student_details,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb.place(x=200,y=10)
         #  sbl=Button(bglbl,text="Student Details",command=self.student_details,cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl.place(x=195,y=195,width=220,height=40)
                 #------------------------Training Data----------------------------
-         trbutton=Image.open(r"attendese\pictures\training.jpeg")
-         trbutton=trbutton.resize((220,220),Image.ANTIALIAS)
-         self.trphotoimg=ImageTk.PhotoImage(trbutton)
-         sb2=Button(bglbl,command=self.classifier_train,image=self.trphotoimg,cursor="hand2")
-         sb2.place(x=415,y=10,width=220,height=220)
+         trbutton=Image.open(r"attendese\pictures\traindata.png")
+         trbutton=trbutton.resize((150,150),Image.ANTIALIAS)
+         self.trphotoimg=ImageTk.PhotoImage(trbutton) 
+         sb2=ct.CTkButton(bglbl,command=self.classifier_train,text="",image=self.trphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb2.place(x=415,y=10)
         #  sbl2=Button(bglbl,command=self.classifier_train,text="Train Data",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
-        #  sbl2.place(x=425,y=195,width=220,height=40)
+        #  sbl2.place(x=425,y=195)
          #----------------FACE DETECTION-------------------------------------
-         fdbutton=Image.open(r"attendese\pictures\h14.jpeg")
-         fdbutton=fdbutton.resize((220,220),Image.ANTIALIAS)
+         fdbutton=Image.open(r"attendese\pictures\face detect.png")
+         fdbutton=fdbutton.resize((150,150),Image.ANTIALIAS)
          self.fdphotoimg=ImageTk.PhotoImage(fdbutton)
-         sb1=Button(bglbl,command=self.recognize_face,image=self.fdphotoimg,cursor="hand2")
-         sb1.place(x=635,y=10,width=220,height=220)
+         sb1=ct.CTkButton(bglbl,text="",command=self.recognize_face,image=self.fdphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb1.place(x=635,y=10)
         #  sbl1=Button(bglbl,text="Face Detector",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
-        #  sbl1.place(x=655,y=195,width=220,height=40)
+        #  sbl1.place(x=655,y=195,width=150,height=40)
      
     #--------------------------Attendance---------------------------
-         adbutton=Image.open(r"attendese\pictures\attendance.jpeg")
-         adbutton=adbutton.resize((220,220),Image.ANTIALIAS)
+         adbutton=Image.open(r"attendese\pictures\details.png")
+         adbutton=adbutton.resize((150,150),Image.ANTIALIAS)
          self.adphotoimg=ImageTk.PhotoImage(adbutton)
 
-         sb3=Button(bglbl,command=self.attendance,image=self.adphotoimg,cursor="hand2")
-         sb3.place(x=855,y=10,width=220,height=220)
+         sb3=ct.CTkButton(bglbl,text="",command=self.attendance,image=self.adphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb3.place(x=855,y=10)
         #  sbl3=Button(bglbl,command=self.attendance,text="Attendance Details",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
-        #  sbl3.place(x=885,y=195,width=220,height=40)
+        #  sbl3.place(x=885,y=195,width=150,height=40)
 
     #-----------------Photos------------------------
-         phbutton=Image.open(r"attendese\pictures\photos.jpg")
-         phbutton=phbutton.resize((220,220),Image.ANTIALIAS)
+         phbutton=Image.open(r"attendese\pictures\photosget.png")
+         phbutton=phbutton.resize((150,150),Image.ANTIALIAS)
          self.phphotoimg=ImageTk.PhotoImage(phbutton)
 
-         sb4=Button(bglbl,command=self.open_images,image=self.phphotoimg,cursor="hand2")
-         sb4.place(x=1075,y=10,width=220,height=220)
+         sb4=ct.CTkButton(bglbl,text="",command=self.open_images,image=self.phphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb4.place(x=1075,y=10)
         #  sbl4=Button(bglbl,command=self.open_images,text="Photos",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
-        #  sbl4.place(x=1115,y=195,width=220,height=40)
+        #  sbl4.place(x=1115,y=195,width=150,height=40)
 
     #----------------Help--------------------
          hbutton=Image.open(r"attendese\pictures\support.png")
