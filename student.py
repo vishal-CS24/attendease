@@ -488,7 +488,7 @@ class Student():
 
                cap.release()
                cv2.destroyAllWindows()
-               messagebox.showinfo("Results","Generating Dataset of Student Completed")
+               messagebox.showinfo("Results","Generating Dataset of Student Completed",parent=self.root)
           except Exception as es:
                messagebox.showerror("Error",f"Due to {str(es)}",parent=self.root)
 

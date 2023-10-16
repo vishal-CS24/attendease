@@ -28,56 +28,56 @@ class Attendease():
 
          #--------------------Student Button--------------------------
          stdbutton=Image.open(r"attendese\pictures\studetails.png")
-         stdbutton=stdbutton.resize((150,150),Image.ANTIALIAS)
+         stdbutton=stdbutton.resize((130,130),Image.ANTIALIAS)
          self.stdphotoimg=ImageTk.PhotoImage(stdbutton)
          sb=ct.CTkButton(bglbl,text="",image=self.stdphotoimg,command=self.student_details,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f",anchor="center")
-         sb.place(x=200,y=10)
+         sb.place(x=80,y=70)
         #  sbl=Button(bglbl,text="Student Details",command=self.student_details,cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl.place(x=195,y=195,width=220,height=40)
                 #------------------------Training Data----------------------------
          trbutton=Image.open(r"attendese\pictures\traindata.png")
-         trbutton=trbutton.resize((150,150),Image.ANTIALIAS)
+         trbutton=trbutton.resize((130,130),Image.ANTIALIAS)
          self.trphotoimg=ImageTk.PhotoImage(trbutton) 
          sb2=ct.CTkButton(bglbl,command=self.classifier_train,text="",image=self.trphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
-         sb2.place(x=415,y=10)
+         sb2.place(x=80,y=240)
         #  sbl2=Button(bglbl,command=self.classifier_train,text="Train Data",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl2.place(x=425,y=195)
          #----------------FACE DETECTION-------------------------------------
          fdbutton=Image.open(r"attendese\pictures\face detect.png")
-         fdbutton=fdbutton.resize((150,150),Image.ANTIALIAS)
+         fdbutton=fdbutton.resize((130,130),Image.ANTIALIAS)
          self.fdphotoimg=ImageTk.PhotoImage(fdbutton)
          sb1=ct.CTkButton(bglbl,text="",command=self.recognize_face,image=self.fdphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
-         sb1.place(x=635,y=10)
+         sb1.place(x=80,y=410)
         #  sbl1=Button(bglbl,text="Face Detector",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl1.place(x=655,y=195,width=150,height=40)
 
     #--------------------------Attendance---------------------------
          adbutton=Image.open(r"attendese\pictures\attenddetails.png")
-         adbutton=adbutton.resize((150,150),Image.ANTIALIAS)
+         adbutton=adbutton.resize((130,130),Image.ANTIALIAS)
          self.adphotoimg=ImageTk.PhotoImage(adbutton)
 
          sb3=ct.CTkButton(bglbl,text="",command=self.attendance,image=self.adphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
-         sb3.place(x=855,y=10)
+         sb3.place(x=1290,y=70)
         #  sbl3=Button(bglbl,command=self.attendance,text="Attendance Details",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl3.place(x=885,y=195,width=150,height=40)
 
     #-----------------Photos------------------------
          phbutton=Image.open(r"attendese\pictures\photosget.png")
-         phbutton=phbutton.resize((150,150),Image.ANTIALIAS)
+         phbutton=phbutton.resize((130,130),Image.ANTIALIAS)
          self.phphotoimg=ImageTk.PhotoImage(phbutton)
 
          sb4=ct.CTkButton(bglbl,text="",command=self.open_images,image=self.phphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
-         sb4.place(x=1075,y=10)
+         sb4.place(x=1290,y=240)
         #  sbl4=Button(bglbl,command=self.open_images,text="Photos",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
         #  sbl4.place(x=1115,y=195,width=150,height=40)
 
     #----------------Help--------------------
          hbutton=Image.open(r"attendese\pictures\support.png")
-         hbutton=hbutton.resize((220,120),Image.ANTIALIAS)
+         hbutton=hbutton.resize((220,200),Image.ANTIALIAS)
          self.hphotoimg=ImageTk.PhotoImage(hbutton)
 
-         sb5=Button(bglbl,image=self.hphotoimg,cursor="hand2",bd=10,background="#5bb6c3")
-         sb5.place(x=535,y=680,width=220,height=120)
+         sb5=Button(bglbl,image=self.hphotoimg,cursor="hand2")
+         sb5.place(x=482,y=560,width=170,height=50)
      #     sbl5=Button(bglbl,text="Support",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
      #     sbl5.place(x=535,y=510,width=220,height=40)
 

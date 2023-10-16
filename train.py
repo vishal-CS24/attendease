@@ -7,6 +7,7 @@ import os
 import mysql.connector
 import numpy as np
 
+
 def train_classifier():
     data_dir=(r"C:\Users\Acer\Desktop\major project\attendese\Data")
     path=[os.path.join(data_dir,file)for file in os.listdir(data_dir)]
@@ -29,7 +30,7 @@ def train_classifier():
     clf.train(faces,ids)
     clf.write("classifier.xml")
     cv2.destroyAllWindows()
-    messagebox.showinfo("Result","Training of dataset completed")
+    messagebox.showinfo("Result","Training of dataset completed",parent=self.root)
 
 
 

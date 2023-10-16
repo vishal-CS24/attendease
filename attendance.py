@@ -161,7 +161,7 @@ class Attendance_mgmnt():
                 exWrite=csv.writer(myfile,delimiter=",")
                 for i in mydata:
                     exWrite.writerow(i)
-                messagebox.showinfo("Data Export","Your Data is Exported to "+os.path.basename(fln)+" Sucessfully")
+                messagebox.showinfo("Data Export","Your Data is Exported to "+os.path.basename(fln)+" Sucessfully",parent=self.root)
         except Exception as es:
             messagebox.showerror("Error",f"Due to :{str(es)}",parent=self.root)
 

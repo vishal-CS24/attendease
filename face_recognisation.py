@@ -10,7 +10,10 @@ from time import strftime
 from datetime import datetime
 
 def mark_attendance(id1,n):
-    with open("attendese\cse7th.csv","r+",newline="\n") as f:
+    now=datetime.now()
+    date=now.strftime("%d_%m_%Y")
+    with open(f"attendese\{date}.csv","a+",newline="\n") as f:
+        f.seek(0)
         myDataList=f.readlines()
         name_list=[]
         for line in myDataList:
@@ -18,10 +21,10 @@ def mark_attendance(id1,n):
             name_list.append(entry[0])
         if str(id1) not in name_list:
             # print(type(id1))
-            now=datetime.now()
-            date=now.strftime("%d/%m/%Y")
+            # now=datetime.now()
+            # date=now.strftime("%d/%m/%Y")
             time=now.strftime("%H:%M:%S")
-            f.writelines(f"\n{id1},{n},{date},{time},present")
+            f.writelines(f"\n{id1},{n},{time},{date},present")
 
 def faceRecognisation():
     def draw_boundary(img,classifier,scaleFactor,minNeighbors,colour,text,clf):

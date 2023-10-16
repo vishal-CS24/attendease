@@ -48,7 +48,7 @@ class register_Page():
          self.chkbox=ct.CTkCheckBox(wbg_lbl,variable=self.var_check,text="I Agree the Terms and Conditions",hover_color="#210953",width=650,height=50,fg_color="#1d1325",bg_color="#1d1325",border_width=2,corner_radius=5,onvalue=1,offvalue=0)
          self.chkbox.place(x=50,y=325)
         #=======================login button===============
-         login_btn=ct.CTkButton(wbg_lbl,text="Login Now",width=300,height=50,cursor="hand2",fg_color="#34675f",hover_color="#1f2435",bg_color="#1d1325")
+         login_btn=ct.CTkButton(wbg_lbl,text="Login Now",command=root.destroy,width=300,height=50,cursor="hand2",fg_color="#34675f",hover_color="#1f2435",bg_color="#1d1325")
          login_btn.place(x=400,y=400)
         #==============Reginter button================
          reg_btn=ct.CTkButton(wbg_lbl,text="Register Now",command=self.register_Data,width=300,height=50,cursor="hand2",fg_color="#34675f",hover_color="#1f2435",bg_color="#1d1325")
@@ -57,29 +57,34 @@ class register_Page():
     def register_Data(self):
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if self.var_fname.get()=="Full Name" or self.var_mail.get()=="Email" or self.var_password.get()=="Password" or self.var_question.get()=="Select Security Question" or self.var_contact.get()=="Contact Number" or self.var_answer.get()=="Security Answer":
-            messagebox.showwarning("Required","All fields are Required")
+            messagebox.showwarning("Required","All fields are Required",parent=self.root)
         elif len(self.var_contact.get())!=10:
           messagebox.showwarning("Phone number Error","Please add 10 digit phone number",parent=self.root)
         elif not(re.fullmatch(regex, self.var_mail.get())):
           messagebox.showwarning("Email Error","Please add Valid email Address",parent=self.root)
         elif self.var_check.get()!="1":
-          messagebox.showwarning("Check Box error","Please Accept Terms and COnditions",parent=self.root)
+          messagebox.showwarning("Check Box error","Please Accept Terms and Conditions",parent=self.root)
 
         else:
             try:
                 conn=mysql.connector.connect(host="localhost",user="root",password="root",database="attendease_db")
-                my_cursor=conn.cursor()      
-                my_cursor.execute("insert into registerdb values(%s,%s,%s,%s,%s,%s)",(
-                  self.var_fname.get(),
-                  self.var_contact.get(),
-                  self.var_mail.get(),
-                  self.var_question.get(),
-                  self.var_answer.get(),
-                  self.var_password.get()
-               ))
-                conn.commit()
-                conn.close()
-                messagebox.showinfo("sucess","Student Details has been added Sucessfully!",parent=self.root)
+                my_cursor=conn.cursor()
+                my_cursor.execute("select * from registerdb where Email=%s",(self.var_mail.get(),))   
+                row=my_cursor.fetchone()  
+                if row !=None:
+                  messagebox.showerror("User Exists","USer Already Exist,Please try another email",parent=self.root)
+                else:
+                  my_cursor.execute("insert into registerdb values(%s,%s,%s,%s,%s,%s)",(
+                    self.var_fname.get(),
+                    self.var_contact.get(),
+                    self.var_mail.get(),
+                    self.var_question.get(),
+                    self.var_answer.get(),
+                    self.var_password.get()
+                ))
+                  conn.commit()
+                  conn.close()
+                  messagebox.showinfo("sucess","Student Details has been added Sucessfully!")
             except Exception as es:
                messagebox.showerror("Error",f"Due to :{str(es)}",parent=self.root)
             
