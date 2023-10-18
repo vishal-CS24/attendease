@@ -73,20 +73,20 @@ class Attendease():
 
     #----------------Help--------------------
          hbutton=Image.open(r"attendese\pictures\support.png")
-         hbutton=hbutton.resize((220,200),Image.ANTIALIAS)
+         hbutton=hbutton.resize((130,130),Image.ANTIALIAS)
          self.hphotoimg=ImageTk.PhotoImage(hbutton)
 
          sb5=Button(bglbl,image=self.hphotoimg,cursor="hand2")
-         sb5.place(x=482,y=560,width=170,height=50)
+         sb5.place(x=1290,y=400,width=130,height=130)
      #     sbl5=Button(bglbl,text="Support",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
      #     sbl5.place(x=535,y=510,width=220,height=40)
 
     #---------------------------Exit------------------------------
-         ebutton=Image.open(r"attendese\pictures\exit.png")
-         ebutton=ebutton.resize((220,120),Image.ANTIALIAS)
+         ebutton=Image.open(r"attendese\pictures\log-out1.png")
+         ebutton=ebutton.resize((100,100),Image.ANTIALIAS)
          self.ehphotoimg=ImageTk.PhotoImage(ebutton)
-         sb5=Button(bglbl,command=root.destroy,image=self.ehphotoimg,cursor="hand2",background="#5bb6c3")
-         sb5.place(x=765,y=680,width=220,height=120)
+         sb5=Button(bglbl,command=root.destroy,image=self.ehphotoimg,cursor="hand2",background="black")
+         sb5.place(x=1340,y=680,width=100,height=100)
      #     sbl5=Button(bglbl,command=root.destroy,text="Exit",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
      #     sbl5.place(x=765,y=510,width=220,height=40)
     #====================photo Access===========

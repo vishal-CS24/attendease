@@ -30,40 +30,55 @@ class login_Page():
          lbg_lbl=Label(frame,image=self.bglimg1)
          lbg_lbl.place(x=0,y=0,width=565,height=380)
 
+
+ 
+
 #============frame for buttons and entry widgets=====================
          ip_frame=ct.CTkFrame(frame,width=515,height=241,corner_radius=10,fg_color="#000000",border_width=2)
          ip_frame.place(x=25,y=120)
+
+                 #========usernamelogo========
+         userlogo=Image.open("./attendese\pictures\person1.png")
+         userlogo=userlogo.resize((45,45),Image.ANTIALIAS)
+         self.uimg=ImageTk.PhotoImage(userlogo)
+         uselogolabel=Label(ip_frame,image=self.uimg,background="black")
+         uselogolabel.place(x=85,y=10,width=45,height=45)
+
+         passlogo=Image.open("./attendese\pictures\padlock.png")
+         passlogo=passlogo.resize((45,45),Image.ANTIALIAS)
+         self.pimg=ImageTk.PhotoImage(passlogo)
+         passlogolabel=Label(ip_frame,image=self.pimg,background="black")
+         passlogolabel.place(x=85,y=62,width=45,height=45)
          
         #==========email==================
-         self.username = ct.CTkEntry(ip_frame,textvariable=self.var_username,fg_color="#2b1b33", placeholder_text="Enter your username",width=495,height=45,border_width=2,font=("times new roman",25))
-         self.username.place(x=10,y=10)
+         self.username = ct.CTkEntry(ip_frame,textvariable=self.var_username,fg_color="#2b1b33", placeholder_text="Enter your username",width=300,height=45,border_width=2,font=("times new roman",25))
+         self.username.place(x=130,y=10)
         #========password================
-         self.password = ct.CTkEntry(ip_frame,show="*",textvariable=self.var_password ,fg_color="#2e1929",placeholder_text="Enter your Password",width=495,height=45,font=("times new roman",25))
-         self.password.place(x=10,y=65)
+         self.password = ct.CTkEntry(ip_frame,show="*",textvariable=self.var_password ,fg_color="#2e1929",placeholder_text="Enter your Password",width=300,height=45,font=("times new roman",25))
+         self.password.place(x=130,y=65)
         #===========login button============
-         login_btn=ct.CTkButton(ip_frame,command=self.login,text="Login",width=495,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         login_btn.place(x=10,y=115)
+         login_btn=ct.CTkButton(ip_frame,command=self.login,text="Login",width=167.5,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         login_btn.place(x=85,y=130)
         #==============Reginter button================
-         reg_btn=ct.CTkButton(ip_frame,command=self.registration,text="Register Now",width=495,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         reg_btn.place(x=10,y=155)
+         reg_btn=ct.CTkButton(ip_frame,command=self.registration,text="Register Now",width=167.5,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         reg_btn.place(x=257.5,y=130)
         #===============forget button=================
-         fgt_btn=ct.CTkButton(ip_frame,text="Forget Password?",width=495,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         fgt_btn.place(x=10,y=195)
+         fgt_btn=ct.CTkButton(ip_frame,text="Forget Password?",width=345,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         fgt_btn.place(x=85,y=180)
 
     def login(self):
         if self.username.get()=="" or self.password.get()=="":
             messagebox.showerror("Error","All Field are required",parent=self.root)
-        elif self.username.get()=="vishal" and self.password.get()=="123":
-            messagebox.showinfo("Sucess","Welcome to Attendease",parent=self.root)
         else:
             conn=mysql.connector.connect(host="localhost",user="root",password="root",database="attendease_db")
             my_cursor=conn.cursor()
             my_cursor.execute("select * from registerdb where Email=%s and Password=%s",(self.var_username.get(),self.var_password.get()))
             row=my_cursor.fetchone()
-            if row!=None:
+            if row==None:
                 messagebox.showerror("Error","Invalid Username or Password",parent=self.root)
             else:
-                print(row)
+                self.var_username.set("Enter Email Address")
+                self.var_password.set("Password")
                 self.new_window=Toplevel(self.root)
                 self.app=Attendease(self.new_window)
             conn.commit()
