@@ -34,37 +34,37 @@ class login_Page():
  
 
 #============frame for buttons and entry widgets=====================
-         ip_frame=ct.CTkFrame(frame,width=515,height=241,corner_radius=10,fg_color="#000000",border_width=2)
-         ip_frame.place(x=25,y=120)
+        #  ip_frame=ct.CTkFrame(frame,width=515,height=241,corner_radius=10,fg_color="#000000",border_width=2)
+        #  ip_frame.place(x=25,y=120)
 
                  #========usernamelogo========
          userlogo=Image.open("./attendese\pictures\person1.png")
          userlogo=userlogo.resize((45,45),Image.ANTIALIAS)
          self.uimg=ImageTk.PhotoImage(userlogo)
-         uselogolabel=Label(ip_frame,image=self.uimg,background="black")
-         uselogolabel.place(x=85,y=10,width=45,height=45)
+         uselogolabel=Label(frame,image=self.uimg,background="black")
+         uselogolabel.place(x=70,y=130,width=45,height=45)
 
          passlogo=Image.open("./attendese\pictures\padlock.png")
          passlogo=passlogo.resize((45,45),Image.ANTIALIAS)
          self.pimg=ImageTk.PhotoImage(passlogo)
-         passlogolabel=Label(ip_frame,image=self.pimg,background="black")
-         passlogolabel.place(x=85,y=62,width=45,height=45)
+         passlogolabel=Label(frame,image=self.pimg,background="black")
+         passlogolabel.place(x=70,y=182,width=45,height=45)
          
         #==========email==================
-         self.username = ct.CTkEntry(ip_frame,textvariable=self.var_username,fg_color="#2b1b33", placeholder_text="Enter your username",width=300,height=45,border_width=2,font=("times new roman",25))
-         self.username.place(x=130,y=10)
+         self.username = ct.CTkEntry(frame,textvariable=self.var_username,fg_color="#2b1b33", placeholder_text="Enter your username",width=350,height=45,border_width=2,font=("times new roman",25))
+         self.username.place(x=135,y=130)
         #========password================
-         self.password = ct.CTkEntry(ip_frame,show="*",textvariable=self.var_password ,fg_color="#2e1929",placeholder_text="Enter your Password",width=300,height=45,font=("times new roman",25))
-         self.password.place(x=130,y=65)
+         self.password = ct.CTkEntry(frame,show="*",textvariable=self.var_password ,fg_color="#2e1929",placeholder_text="Enter your Password",width=350,height=45,font=("times new roman",25))
+         self.password.place(x=135,y=185)
         #===========login button============
-         login_btn=ct.CTkButton(ip_frame,command=self.login,text="Login",width=167.5,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         login_btn.place(x=85,y=130)
+         login_btn=ct.CTkButton(frame,command=self.login,text="Login",width=200,height=40,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         login_btn.place(x=70,y=250)
         #==============Reginter button================
-         reg_btn=ct.CTkButton(ip_frame,command=self.registration,text="Register Now",width=167.5,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         reg_btn.place(x=257.5,y=130)
+         reg_btn=ct.CTkButton(frame,command=self.registration,text="Register Now",width=200,height=40,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         reg_btn.place(x=280,y=250)
         #===============forget button=================
-         fgt_btn=ct.CTkButton(ip_frame,text="Forget Password?",width=345,height=35,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         fgt_btn.place(x=85,y=180)
+         fgt_btn=ct.CTkButton(frame,text="Forget Password?",width=345,height=40,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         fgt_btn.place(x=110,y=305)
 
     def login(self):
         if self.username.get()=="" or self.password.get()=="":
