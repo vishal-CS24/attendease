@@ -76,8 +76,8 @@ class Attendease():
          hbutton=hbutton.resize((130,130),Image.ANTIALIAS)
          self.hphotoimg=ImageTk.PhotoImage(hbutton)
 
-         sb5=Button(bglbl,image=self.hphotoimg,cursor="hand2")
-         sb5.place(x=1290,y=400,width=130,height=130)
+         sb5=ct.CTkButton(bglbl,text="",image=self.hphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb5.place(x=1290,y=400)
      #     sbl5=Button(bglbl,text="Support",cursor="hand2",font=("Arial", 15,"bold"),bg="#2a6f87",fg="#052556")
      #     sbl5.place(x=535,y=510,width=220,height=40)
 
