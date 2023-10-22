@@ -7,7 +7,6 @@ import os
 import mysql.connector
 import numpy as np
 
-
 def train_classifier():
     data_dir=(r"C:\Users\Acer\Desktop\major project\attendese\Data")
     path=[os.path.join(data_dir,file)for file in os.listdir(data_dir)]
@@ -16,10 +15,7 @@ def train_classifier():
     for image in path:
         img=Image.open(image).convert("L")#convert ot gray scale
         imageNp=np.array(img,"uint8")
-        # print(os.path.split(image.split(".")[1]))
-        # print(image.split(".")[1])
         id1=int(image.split(".")[1])
-        # print(id1)
         faces.append(imageNp)
         ids.append(id1)
         cv2.imshow("Training",imageNp)

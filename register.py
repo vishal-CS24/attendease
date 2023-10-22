@@ -88,7 +88,6 @@ class register_Page():
             except Exception as es:
                messagebox.showerror("Error",f"Due to :{str(es)}",parent=self.root)
             
-
 if __name__=="__main__":
     root=Tk()
     obj=register_Page(root)

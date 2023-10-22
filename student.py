@@ -124,7 +124,6 @@ class Student():
          stddiv_ip=ttk.Entry(cs_frame,textvariable=self.var_div,width=15,font=("times new roman",15))
          stddiv_ip.grid(row=1,column=1,padx=10,sticky=W)
 
-
            #ROll NO
          strno_lbl=Label(cs_frame,text="Roll Number :",font=("times new roman",12,"bold"),bg="white")
          strno_lbl.grid(row=1,column=2,padx=10,pady=10)
@@ -192,7 +191,6 @@ class Student():
 
          update_photo=Button(btn_frame1,text="Update Photo Sample",command=self.generateDataset,width=19,font=("times new roman",13,"bold"),bg="#ace5ee",fg="black")
          update_photo.grid(row=0,column=1)
-
 
         #-----------------------------right frame------------------------------
          right_frame=LabelFrame(main_frame,bd=5,relief=RIDGE,font=("times new roman",15,"bold"),text="Student Details Preview",bg="white")
@@ -422,8 +420,6 @@ class Student():
      self.var_address.set(""),
      self.var_teacher.set("")   
 
-
-
 #==============Dataset generation======================
     def generateDataset(self):
      if self.var_dep.get()=="Select Department" or self.var_name.get()=="" or self.var_address.get()=="" or self.var_course.get()=="Select Course" or self.var_email.get()=="" or self.var_phone.get()=="" or self.var_roll.get()=="" or self.var_gender.get()=="Gender" or self.var_sem.get()=="Select Semester" or self.var_year.get()=="Select session" or self.var_teacher.get()=="" or self.var_div.get()=="" or self.var_id.get()=="":
@@ -525,7 +521,6 @@ class Student():
           
      else:
           messagebox.showwarning("Search Warning","Please Select search type",parent=self.root)
-
 
 if __name__=="__main__":
     root=Tk()

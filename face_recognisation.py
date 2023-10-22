@@ -12,7 +12,7 @@ from datetime import datetime
 def mark_attendance(id1,n):
     now=datetime.now()
     date=now.strftime("%d_%m_%Y")
-    with open(f"attendese\{date}.csv","a+",newline="\n") as f:
+    with open(f"attendese\Attendance_files\{date}.csv","a+",newline="\n") as f:
         f.seek(0)
         myDataList=f.readlines()
         name_list=[]

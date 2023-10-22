@@ -5,6 +5,7 @@ import customtkinter as ct
 from register import register_Page
 from main import Attendease
 import mysql.connector
+from forgot import forgot_passwd
 
 class login_Page():
     def __init__(self,root):
@@ -29,14 +30,8 @@ class login_Page():
          self.bglimg1=ImageTk.PhotoImage(lbgimg)
          lbg_lbl=Label(frame,image=self.bglimg1)
          lbg_lbl.place(x=0,y=0,width=565,height=380)
-
-
  
-
 #============frame for buttons and entry widgets=====================
-        #  ip_frame=ct.CTkFrame(frame,width=515,height=241,corner_radius=10,fg_color="#000000",border_width=2)
-        #  ip_frame.place(x=25,y=120)
-
                  #========usernamelogo========
          userlogo=Image.open("./attendese\pictures\person1.png")
          userlogo=userlogo.resize((45,45),Image.ANTIALIAS)
@@ -63,8 +58,10 @@ class login_Page():
          reg_btn=ct.CTkButton(frame,command=self.registration,text="Register Now",width=200,height=40,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
          reg_btn.place(x=280,y=250)
         #===============forget button=================
-         fgt_btn=ct.CTkButton(frame,text="Forget Password?",width=345,height=40,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
-         fgt_btn.place(x=110,y=305)
+         fgt_btn=ct.CTkButton(frame,text="Forget Password?",command=self.forgot_password,width=410,height=40,cursor="hand2",fg_color="#34675f",hover_color="#1f2435")
+         fgt_btn.place(x=70,y=305)
+         self.var_username.set("Enter Email Address")
+         self.var_password.set("Pwd")
 
     def login(self):
         if self.username.get()=="" or self.password.get()=="":
@@ -87,7 +84,9 @@ class login_Page():
     def registration(self):
             self.new_window=Toplevel(self.root)
             self.app=register_Page(self.new_window)
-
+    def forgot_password(self):
+        self.new_window=Toplevel(self.root)
+        self.app=forgot_passwd(self.new_window)
 if __name__=="__main__":
     root=Tk()
     obj=login_Page(root)
