@@ -10,6 +10,7 @@ class register_Page():
          self.root.geometry("750x600+350+150")
          self.root.title("Registration Page")
          self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.maxsize(750,600)
 #=================variables===============
          self.var_fname=StringVar(value="Full Name")
          self.var_contact=StringVar(value="Contact Number")
