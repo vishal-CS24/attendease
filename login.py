@@ -6,14 +6,13 @@ from register import register_Page
 from main import Attendease
 import mysql.connector
 from forgot import forgot_passwd
-
 class login_Page():
     def __init__(self,root):
          self.root= root
          self.root.geometry("1535x835+0+0")
          self.root.title("Login Page")
          self.root.iconbitmap("./attendese\pictures\icon.ico")
-
+         #====variables=========
          self.var_username = StringVar()
          self.var_password= StringVar()
 #========background image======================
@@ -30,7 +29,6 @@ class login_Page():
          self.bglimg1=ImageTk.PhotoImage(lbgimg)
          lbg_lbl=Label(frame,image=self.bglimg1)
          lbg_lbl.place(x=0,y=0,width=565,height=380)
- 
 #============frame for buttons and entry widgets=====================
                  #========usernamelogo========
          userlogo=Image.open("./attendese\pictures\person1.png")

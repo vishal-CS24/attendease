@@ -24,7 +24,7 @@ def train_classifier():
     #==========Traing and Save=====
     clf=cv2.face.LBPHFaceRecognizer_create()
     clf.train(faces,ids)
-    clf.write("classifier.xml")
+    clf.write("./attendese\classifier.xml")
     cv2.destroyAllWindows()
     messagebox.showinfo("Result","Training of dataset completed",parent=self.root)
 

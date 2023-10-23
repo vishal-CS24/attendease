@@ -15,7 +15,7 @@ class register_Page():
          self.var_fname=StringVar(value="Full Name")
          self.var_contact=StringVar(value="Contact Number")
          self.var_mail=StringVar(value="Email")
-         self.var_question=StringVar()
+         self.var_question=StringVar() 
          self.var_answer=StringVar(value="Security Answer")
          self.var_password=StringVar(value="Password")
          self.var_check=StringVar()
@@ -65,7 +65,6 @@ class register_Page():
           messagebox.showwarning("Email Error","Please add Valid email Address",parent=self.root)
         elif self.var_check.get()!="1":
           messagebox.showwarning("Check Box error","Please Accept Terms and Conditions",parent=self.root)
-
         else:
             try:
                 conn=mysql.connector.connect(host="localhost",user="root",password="root",database="attendease_db")

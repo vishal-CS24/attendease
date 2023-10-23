@@ -65,7 +65,7 @@ class Attendease():
          hbutton=hbutton.resize((130,130),Image.ANTIALIAS)
          self.hphotoimg=ImageTk.PhotoImage(hbutton)
 
-         sb5=ct.CTkButton(bglbl,text="",image=self.hphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
+         sb5=ct.CTkButton(bglbl,text="",command=self.support_win,image=self.hphotoimg,cursor="hand2",corner_radius=20,bg_color="black",fg_color="#ec850a",hover_color="#d96b0f")
          sb5.place(x=1290,y=400)
 
     #---------------------------Exit------------------------------
@@ -93,6 +93,18 @@ class Attendease():
         self.new_window=Toplevel(self.root)
         self.app=Attendance_mgmnt(self.new_window)
 
+    def support_win(self):
+         self.support_window=Toplevel(self.root)
+         self.support_window.geometry("1535x835+0+0")
+         self.support_window.title("How can I help you?")
+         self.support_window.iconbitmap("./attendese\pictures\icon.ico")
+         self.support_window.minsize(1535,835)
+         self.root.state('zoomed')
+         supp_img=Image.open(r"attendese\pictures\support_contactuspage.png")
+         supp_img=supp_img.resize((1535,835),Image.ANTIALIAS)
+         self.sup_photoimg=ImageTk.PhotoImage(supp_img)
+         supp_lbl=Label(self.support_window,image=self.sup_photoimg)
+         supp_lbl.place(x=0,y=0,width=1535,height=835)
 if __name__=="__main__":
     root=Tk()
     obj=Attendease(root)
