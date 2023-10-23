@@ -5,7 +5,7 @@ import mysql.connector
 class forgot_passwd():
     def __init__(self,root):
          self.root= root
-         self.root.geometry("400x300+1000+300")
+         self.root.geometry("400x300+550+300")
          self.root.title("Forgot Password")
          self.root.iconbitmap("./attendese\pictures\icon.ico")
          self.root.configure(bg="#1d1325")
