@@ -8,7 +8,7 @@ import mysql.connector
 import numpy as np
 
 def train_classifier():
-    data_dir=(r"C:\Users\Acer\Desktop\major project\attendese\Data")
+    data_dir = (r"Data")
     path=[os.path.join(data_dir,file)for file in os.listdir(data_dir)]
     faces=[]
     ids=[]
@@ -24,9 +24,10 @@ def train_classifier():
     #==========Traing and Save=====
     clf=cv2.face.LBPHFaceRecognizer_create()
     clf.train(faces,ids)
-    clf.write("./attendese\classifier.xml")
+    clf.write("classifier.xml")
     cv2.destroyAllWindows()
-    messagebox.showinfo("Result","Training of dataset completed",parent=self.root)
+    messagebox.showinfo(
+        "Result", "Training of dataset completed")
 
 
 

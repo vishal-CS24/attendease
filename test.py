@@ -1,5 +1,5 @@
 import cv2
-faceClassifier=cv2.CascadeClassifier("attendese\haarcascade_frontalface_default.xml")
+faceClassifier = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 def faceCroped(img):
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     faces=faceClassifier.detectMultiScale(gray,1.3,5)

@@ -9,7 +9,7 @@ class register_Page():
          self.root= root
          self.root.geometry("750x600+350+150")
          self.root.title("Registration Page")
-         self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.iconbitmap("pictures\icon.ico")
          self.root.maxsize(750,600)
 #=================variables===============
          self.var_fname=StringVar(value="Full Name")
@@ -21,7 +21,7 @@ class register_Page():
          self.var_check=StringVar()
          
          #========background image======================
-         self.wbg=ImageTk.PhotoImage(file="./attendese\pictures\greg.png")
+         self.wbg = ImageTk.PhotoImage(file="pictures\greg.png")
          wbg_lbl=Label(self.root,image=self.wbg)
          wbg_lbl.place(x=0,y=0,relwidth=1,relheight=1)
 

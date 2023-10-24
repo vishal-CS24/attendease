@@ -10,7 +10,7 @@ class Student():
          self.root= root
          self.root.geometry("1535x835+0+0")
          self.root.title("Student Management System")
-         self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.iconbitmap("pictures\icon.ico")
          self.root.state('zoomed')
 #=============variables============
          self.var_dep=StringVar()
@@ -32,21 +32,21 @@ class Student():
          #-----------------------Top bar-------------------------------------------------------------
 
         #  #first image
-         img=Image.open(r"attendese\pictures\sd1.jpeg")
+         img = Image.open(r"pictures\sd1.jpeg")
          img=img.resize((550,130),Image.ANTIALIAS)
          self.photoimg=ImageTk.PhotoImage(img)
          f_lbl=Label(self.root,image=self.photoimg)
          f_lbl.place(x=0,y=0,width=550,height=130)
 
         #  #2nd image
-         img1=Image.open(r"attendese\pictures\sd2.jpeg")
+         img1 = Image.open(r"pictures\sd2.jpeg")
          img1=img1.resize((500,130),Image.ANTIALIAS)
          self.photoimg1=ImageTk.PhotoImage(img1)
          f_lbl1=Label(self.root,image=self.photoimg1)
          f_lbl1.place(x=550,y=0,width=500,height=130)
 
          #3rd image
-         img2=Image.open(r"attendese\pictures\sd3.jpeg")
+         img2 = Image.open(r"pictures\sd3.jpeg")
          img2=img2.resize((550,130),Image.ANTIALIAS)
          self.photoimg2=ImageTk.PhotoImage(img2)
          f_lbl2=Label(self.root,image=self.photoimg2)
@@ -62,7 +62,7 @@ class Student():
          left_frame.place(x=10,y=10,width=720,height=620)
 
          #-------------image on top-----------
-         img4=Image.open(r"attendese\pictures\stu.jpeg")
+         img4 = Image.open(r"pictures\stu.jpeg")
          img4=img4.resize((700,130),Image.ANTIALIAS)
          self.photoimg4=ImageTk.PhotoImage(img4)
          f_lbl4=Label(left_frame,image=self.photoimg4)
@@ -196,7 +196,7 @@ class Student():
          right_frame=LabelFrame(main_frame,bd=5,relief=RIDGE,font=("times new roman",15,"bold"),text="Student Details Preview",bg="white")
          right_frame.place(x=760,y=10,width=750,height=620)
 
-         img5=Image.open(r"attendese\pictures\stu.jpeg")
+         img5 = Image.open(r"pictures\stu.jpeg")
          img5=img5.resize((740,130),Image.ANTIALIAS)
          self.photoimg5=ImageTk.PhotoImage(img5)
          f_lbl5=Label(right_frame,image=self.photoimg5)
@@ -457,7 +457,8 @@ class Student():
                conn.close()
 
 #============face recognisation=====================
-               faceClassifier=cv2.CascadeClassifier("attendese\haarcascade_frontalface_default.xml")
+               faceClassifier = cv2.CascadeClassifier(
+                   "haarcascade_frontalface_default.xml")
                def faceCroped(img):
                     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
                     faces=faceClassifier.detectMultiScale(gray,1.3,5)
@@ -475,7 +476,7 @@ class Student():
                     c=faceCroped(frame1)
                     face=cv2.resize(c,(450,450))
                     face=cv2.cvtColor(face,cv2.COLOR_BGR2GRAY)
-                    file_path="attendese\Data/user."+str(id)+"."+str(img_id)+".jpg"
+                    file_path = "Data/user."+str(id)+"."+str(img_id)+".jpg"
                     cv2.imwrite(file_path,face)
                     # cv2.putText(face,cv2.FONT_HERSHEY_COMPLEX,1,(255, 255, 255), 1,cv2.LINE_AA)
                     cv2.imshow("Cropped Face",face)

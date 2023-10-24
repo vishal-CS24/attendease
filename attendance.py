@@ -13,7 +13,7 @@ class Attendance_mgmnt():
          self.root= root
          self.root.geometry("1535x835+0+0")
          self.root.title("Attendance Management System")
-         self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.iconbitmap("pictures\icon.ico")
          self.root.state('zoomed')
 
          #-===text variables========
@@ -24,14 +24,14 @@ class Attendance_mgmnt():
          self.var_name=StringVar()
 
           #  #first image
-         img=Image.open(r"attendese\pictures\sd2.jpeg")
+         img = Image.open(r"pictures\sd2.jpeg")
          img=img.resize((800,150),Image.ANTIALIAS)
          self.photoimg=ImageTk.PhotoImage(img)
          f_lbl=Label(self.root,image=self.photoimg)
          f_lbl.place(x=0,y=0,width=800,height=150)
 
         #  #2nd image
-         img1=Image.open(r"attendese\pictures\sd2.jpeg")
+         img1 = Image.open(r"pictures\sd2.jpeg")
          img1=img1.resize((800,150),Image.ANTIALIAS)
          self.photoimg1=ImageTk.PhotoImage(img1)
          f_lbl1=Label(self.root,image=self.photoimg1)
@@ -47,7 +47,7 @@ class Attendance_mgmnt():
          left_frame.place(x=10,y=5,width=720,height=600)
 
           #-------------image on top-----------
-         img4=Image.open(r"attendese\pictures\stu.jpeg")
+         img4 = Image.open(r"pictures\stu.jpeg")
          img4=img4.resize((700,130),Image.ANTIALIAS)
          self.photoimg4=ImageTk.PhotoImage(img4)
          f_lbl4=Label(left_frame,image=self.photoimg4)

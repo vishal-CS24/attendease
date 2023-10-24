@@ -7,7 +7,7 @@ class forgot_passwd():
          self.root= root
          self.root.geometry("400x300+550+300")
          self.root.title("Forgot Password")
-         self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.iconbitmap("pictures\icon.ico")
          self.root.configure(bg="#1d1325")
          self.root.maxsize(400,300)
          self.var_question=StringVar()

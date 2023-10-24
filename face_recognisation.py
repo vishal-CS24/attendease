@@ -12,7 +12,7 @@ from datetime import datetime
 def mark_attendance(id1,n):
     now=datetime.now()
     date=now.strftime("%d_%m_%Y")
-    with open(f"attendese\Attendance_files\{date}.csv","a+",newline="\n") as f:
+    with open(f"Attendance_files\{date}.csv", "a+", newline="\n") as f:
         f.seek(0)
         myDataList=f.readlines()
         name_list=[]
@@ -49,9 +49,9 @@ def faceRecognisation():
     def recognize(img,classifier,faceCascade):
         coords=draw_boundary(img,faceCascade,1.1,10,(255,255,255),"Face",clf)
         return img
-    faceCascade=cv2.CascadeClassifier("attendese\haarcascade_frontalface_default.xml")
+    faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
     clf=cv2.face.LBPHFaceRecognizer_create()
-    clf.read("./attendese\classifier.xml")
+    clf.read("classifier.xml")
     video_cap=cv2.VideoCapture(0)
     while(True):
         ret,img=video_cap.read()
