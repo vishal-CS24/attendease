@@ -99,7 +99,6 @@ class login_Page():
         self.new_window = Toplevel(self.root)
         self.app = forgot_passwd(self.new_window)
 
-
 if __name__ == "__main__":
     root = Tk()
     obj = login_Page(root)
