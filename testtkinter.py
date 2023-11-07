@@ -8,14 +8,14 @@ class login_Page():
          self.root= root
          self.root.geometry("1535x835+0+0")
          self.root.title("Login Page")
-         self.root.iconbitmap("./attendese\pictures\icon.ico")
+         self.root.iconbitmap("pictures\icon.ico")
 #========background image======================
         #  self.wbg=ImageTk.PhotoImage(file="./attendese\pictures\h8.jpg")
         #  self.wbg=self.wbg.resize((1535,835),Image.ANTIALIAS)
         #  wbg_lbl=Label(self.root,image=self.wbg)
         #  wbg_lbl.place(x=0,y=0,relwidth=1,relheight=1)
 
-         img=Image.open("./attendese\pictures\h8.jpg")
+         img = Image.open("pictures\h8.jpg")
          img=img.resize((1535,835),Image.ANTIALIAS)
          self.bgimg=ImageTk.PhotoImage(img)
          f_lbl=Label(self.root,image=self.bgimg)
