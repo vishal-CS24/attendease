@@ -8,21 +8,42 @@ import mysql.connector
 import numpy as np
 from time import strftime
 from datetime import datetime
+import csv
 
-def mark_attendance(id1,n):
-    now=datetime.now()
-    date=now.strftime("%d_%m_%Y")
-    with open(f"Attendance_files\{date}.csv", "a+", newline="\n") as f:
+
+def mark_attendance(id1, n):
+    now = datetime.now()
+    date = now.strftime("%d_%m_%Y")
+
+    # Predefined column names
+    columns = ['Rollno', 'Name', 'Time', 'Date', 'Status']
+
+    # Check if the file already exists, if not, write the header
+    file_path = f"Attendance_files/{date}.csv"
+    is_file_empty = not os.path.isfile(
+        file_path) or os.stat(file_path).st_size == 0
+
+    with open(file_path, "a+", newline="\n") as f:
+        writer = csv.DictWriter(f, fieldnames=columns)
+
+        # Write header if the file is empty
+        if is_file_empty:
+            writer.writeheader()
+
+        # Check if the ID is already in the attendance file
         f.seek(0)
-        myDataList=f.readlines()
-        name_list=[]
-        for line in myDataList:
-            entry=line.split((","))
-            name_list.append(entry[0])
-        if str(id1) not in name_list:
-            time=now.strftime("%H:%M:%S")
-            date=now.strftime("%d-%m-%Y")
-            f.writelines(f"\n{id1},{n},{time},{date},present")
+        myDataList = f.readlines()
+        id_list = [line.split(",")[0] for line in myDataList]
+
+        if str(id1) not in id_list:
+            time = now.strftime("%H:%M:%S")
+            date = now.strftime("%d-%m-%Y")
+
+            # Write attendance entry
+            writer.writerow({'Rollno': id1, 'Name': n,
+                            'Time': time, 'Date': date, 'Status': 'present'})
+
+
 def faceRecognisation():
     def draw_boundary(img,classifier,scaleFactor,minNeighbors,colour,text,clf):
         gray_image=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)

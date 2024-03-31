@@ -7,7 +7,6 @@ from main import Attendease
 import mysql.connector
 from forgot import forgot_passwd
 
-
 class login_Page():
     def __init__(self, root):
         self.root = root
@@ -72,7 +71,7 @@ class login_Page():
     def login(self):
         if self.username.get() == "" or self.password.get() == "":
             messagebox.showerror(
-                "Error", "All Field are required", parent=self.root)
+                "Error", "All Fields are required", parent=self.root)
         else:
             conn = mysql.connector.connect(
                 host="localhost", user="root", password="root", database="attendease_db")
@@ -80,14 +79,22 @@ class login_Page():
             my_cursor.execute("select * from registerdb where Email=%s and Password=%s",
                               (self.var_username.get(), self.var_password.get()))
             row = my_cursor.fetchone()
-            if row == None:
+            if row is None:
                 messagebox.showerror(
                     "Error", "Invalid Username or Password", parent=self.root)
             else:
                 self.var_username.set("Enter Email Address")
                 self.var_password.set("Password")
-                self.new_window = Toplevel(self.root)
-                self.app = Attendease(self.new_window)
+
+                # Close the current login window
+                self.root.destroy()
+                # Open a new window only if there isn't one already
+                if not hasattr(self, 'new_window'):
+                    self.new_window = Tk()
+                    # Set the geometry as needed
+                    self.new_window.geometry("1535x835+0+0")
+                    self.app = Attendease(self.new_window)
+
             conn.commit()
             conn.close()
 
@@ -98,6 +105,7 @@ class login_Page():
     def forgot_password(self):
         self.new_window = Toplevel(self.root)
         self.app = forgot_passwd(self.new_window)
+
 
 if __name__ == "__main__":
     root = Tk()

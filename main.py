@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from PIL import Image,ImageTk
 from student import Student
 import os
@@ -85,6 +85,8 @@ class Attendease():
     #=========function for classifier=========
     def classifier_train(self):
       train.train_classifier()
+      messagebox.showinfo(
+          "Result", "Training of dataset completed", parent=self.root)
     #===========function for recognize face==================
     def recognize_face(self):
       face_recognisation.faceRecognisation()
